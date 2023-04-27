@@ -18,3 +18,18 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+.country-list {
+  font: inherit;
+  border: tomato;
+  border-radius: 1px;
+}
+
+.country-info {
+  color: teal;
+}
+
+input {
+  border-color: brown;
+  border-radius: 8px;
+}
