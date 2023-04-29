@@ -1,8 +1,8 @@
-import './css/styles.css';
-import { fetchCountries } from './api/fetchCountries';
-import { debounce } from 'lodash.debounce';
-import {Notiflix} from 'notiflix';
 
+import { fetchCountries } from './api/fetchCountries';
+import debounce from 'lodash.debounce';
+import Notiflix from 'notiflix';
+import './css/styles.css';
 
 const DEBOUNCE_DELAY = 300;
 
