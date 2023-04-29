@@ -42,4 +42,15 @@ fetchCountries(valueInput)
         resetMarkup(refs.countryInfo);
         Notiflix.Notify.failure('Oops, there is no country with that name.');
     });
+
+function createMarkupCountryList(dataCountry) {
+    const markup = dataCountry
+        .map(({ name, flags }) => {
+            return `<li class='country-list__item'>  
+        <img class="country-list__img" src="${flags.svg}" alt="flag" />
+        <p class="country-list__text">${name.official}</p>
+      </li>`})
+        .join('');
+    return refs.countryList.insertAdjacentHTML('beforeend', markup);
+}
         
