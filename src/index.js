@@ -54,3 +54,27 @@ function createMarkupCountryList(dataCountry) {
     return refs.countryList.insertAdjacentHTML('beforeend', markup);
 }
         
+function createMarkupCountryInfo(dataCountry) {
+    const markup = dataCountry
+        .map(({ name, capital, population, flags, languages }) => {
+            return `
+  <div class="country__flag">
+    <img class="country__img" src="${flags.svg}" alt="flag">
+    <p class="country__name">${name.official}</p>
+  </div>
+  <ul class="country__info">
+      <li class="country__item"> <b>Capital</b>:
+    <span class="country__span">${capital}</span>
+      </li>
+      <li class="country__item"> <b>Population</b>:
+    <span class="country__span">${population}</span>
+      </li>
+      <li class="country__item"> <b>Languages</b>:
+    <span class="country__span">${Object.values(languages).join(', ')}</span>
+      </li>
+  </ul>`;
+        })
+        .join('');
+    return refs.countryInfo.insertAdjacentHTML('beforeend', markup);
+}
+
