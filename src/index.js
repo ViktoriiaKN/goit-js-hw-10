@@ -78,3 +78,6 @@ function createMarkupCountryInfo(dataCountry) {
     return refs.countryInfo.insertAdjacentHTML('beforeend', markup);
 }
 
+function resetMarkup(el) {
+    el.innerHTML = '';
+}
