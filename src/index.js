@@ -1,5 +1,6 @@
 import './css/styles.css';
+import { fetchCountries } from './api/fetch';
 
-fetch('https://restcountries.com/v3.1/all').then(resp => resp.json()).then(data => console.log(data))
-
+const baseUrl = 'restcountries.com/v3.1/all';
+const EndPointName = 'restcountries.com/v3.1/name/{name}';
 const DEBOUNCE_DELAY = 300;
