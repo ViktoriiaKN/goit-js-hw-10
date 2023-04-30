@@ -22,27 +22,27 @@ function searchCountry(e) {
         resetMarkup(refs.countryInfo);
         return;
     }
+
+
+    fetchCountries(inputValue)
+        .then(dataCountry => {
+            if (dataCountry.length > 10) {
+                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+            } else if (dataCountry.length >= 2 && dataCountry.length <= 10) {
+                resetMarkup(refs.countryList);
+                createMarkupCountryList(dataCountry);
+                resetMarkup(refs.countryInfo);
+            } else {
+                resetMarkup(refs.countryInfo);
+                createMarkupCountryInfo(dataCountry);
+                resetMarkup(refs.countryList);
+            }
+        }).catch(() => {
+            resetMarkup(refs.countryList);
+            resetMarkup(refs.countryInfo);
+            Notiflix.Notify.failure('Oops, there is no country with that name.');
+        });
 }
-
-fetchCountries(inputValue)
-    .then(dataCountry => {
-        if (dataCountry.length > 10) {
-            Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-        } else if (dataCountry.length >= 2 && dataCountry.length <= 10) {
-            resetMarkup(refs.countryList);
-            createMarkupCountryList(dataCountry);
-            resetMarkup(refs.countryInfo);
-        } else {
-            resetMarkup(refs.countryInfo);
-            createMarkupCountryInfo(dataCountry);
-            resetMarkup(refs.countryList);
-        }
-    }).catch(() => {
-        resetMarkup(refs.countryList);
-        resetMarkup(refs.countryInfo);
-        Notiflix.Notify.failure('Oops, there is no country with that name.');
-    });
-
 function createMarkupCountryList(dataCountry) {
     const markup = dataCountry
         .map(({ name, flags }) => {
