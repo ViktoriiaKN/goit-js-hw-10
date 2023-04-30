@@ -16,15 +16,15 @@ refs.input.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
 
 function searchCountry(e) {
     e.preventDefault();
-    const valueInput = e.target.value.trim();
-    if (!valueInput) {
+    const inputValue = e.target.value.trim();
+    if (!inputValue) {
         resetMarkup(refs.countryList);
         resetMarkup(refs.countryInfo);
         return;
     }
 }
 
-fetchCountries(valueInput)
+fetchCountries(inputValue)
     .then(dataCountry => {
         if (dataCountry.length > 10) {
             Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
